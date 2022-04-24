@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "install": "gradlew",
+    "build": "gradlew jar",
+    "buildWar": "gradlew war",
+    "javaVersion": "java --version",
+    "b": "git add . && git commit -m \"backup minsekim\" && git push",
+    "javaExe": "explorer \"C:\\Program Files\\Java\\jdk-11.0.12\\bin\\java.exe\""
+  },
+  "repository": "https://github.com/minsekim1/schoolproj.git",
+  "author": "Mins97 <tkarnrwl7862@naver.com>",
+  "name": "schoolproj2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}

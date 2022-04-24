@@ -1,11 +1,13 @@
 # 프로젝트 백엔드 설계
 
 ## 개발 언어 및 프로젝트 구성
+```
 spring boot version : 2.6.7
 project language :  java (Jar)
 java verison: 11
 group id : com.schoolproj2
 의존성 라이브러리: Spring Boot DevTools / Spring Web 기반
+```
 
 ### 실행
 - VScode

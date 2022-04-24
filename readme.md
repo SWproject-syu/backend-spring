@@ -11,7 +11,9 @@ group id : com.schoolproj2
 
 ### 실행
 - VScode
-Schoolproj2Application.java 마우스 우클릭 -> Run Java
+1. Schoolproj2Application.java 선택 후 F5
+2. Schoolproj2Application.java 마우스 우클릭 -> Run Java
+3. `./gradlew bootRun` 또는 `yarn start`
 
 ### 기본세팅
 - 초기개발설정 가이드

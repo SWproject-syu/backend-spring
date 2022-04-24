@@ -4,7 +4,8 @@
     "build": "gradlew jar",
     "buildWar": "gradlew war",
     "javaVersion": "java --version",
-    "b": "git add . && git commit -m \"backup minsekim\" && git push",
+    "start":"./gradlew bootRun",
+    "up": "git add . && git commit -m \"backup minsekim\" && git push",
     "javaExe": "explorer \"C:\\Program Files\\Java\\jdk-11.0.12\\bin\\java.exe\""
   },
   "repository": "https://github.com/minsekim1/schoolproj.git",

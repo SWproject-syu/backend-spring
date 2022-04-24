@@ -1,29 +1,60 @@
 package com.schoolproj2.schoolproj2.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "volunteer")
 public class Volunteer implements Serializable {
 	@Id
-	@Column(name = "name", nullable = false, updatable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@CreatedDate
+	@Column(name = "createAt", nullable = true, columnDefinition = "datetime(3)")
+	private LocalDateTime createAt;
+	@LastModifiedDate
+	@Column(name = "updateAt", nullable = true, columnDefinition = "datetime(3)")
+	private LocalDateTime updateAt;
+	@Column(name = "name", nullable = true)
 	String name = "";
 	@Column(name = "phonenumber", nullable = true)
 	String phonenumber = "";
 	@Column(name = "location", nullable = true)
-	int location = -1;
+	String location = "";
 	@Column(name = "date", nullable = true)
 	String date = "";
-	@Column(name = "start_at", nullable = true)
-	String start_at = "";
-	@Column(name = "end_at", nullable = true)
-	String end_at = "";
-	@Column(name = "date_desc", nullable = true)
-	String date_desc = "";
+	@Column(name = "startAt", nullable = true)
+	String startAt = "";
+	@Column(name = "endAt", nullable = true)
+	String endAt = "";
+	@Column(name = "dateDesc", nullable = true)
+	String dateDesc = "";
+
+	public Volunteer() {
+	}
+
+	public Volunteer(String name, String phonenumber, String location, String date, String startAt,
+			String endAt, String dateDesc) {
+		this.name = name;
+		this.phonenumber = phonenumber;
+		this.location = location;
+		this.date = date;
+		this.startAt = startAt;
+		this.endAt = endAt;
+		this.dateDesc = dateDesc;
+		this.createAt = LocalDateTime.now();
+		this.updateAt = LocalDateTime.now();
+	}
 
 	public Volunteer get() {
 		return this;
@@ -34,9 +65,9 @@ public class Volunteer implements Serializable {
 		this.phonenumber = a.phonenumber;
 		this.location = a.location;
 		this.date = a.date;
-		this.start_at = a.start_at;
-		this.end_at = a.end_at;
-		this.date_desc = a.date_desc;
+		this.startAt = a.startAt;
+		this.endAt = a.endAt;
+		this.dateDesc = a.dateDesc;
 	}
 
 	// @Override

@@ -25,7 +25,7 @@ group id : com.schoolproj2
   2. Extension Pack for Java
 
 ### ERD
-[https://user-images.githubusercontent.com/23623248/164979214-06c04b63-e36b-4958-9be5-749df3fbcb66.png]
+https://user-images.githubusercontent.com/23623248/164979214-06c04b63-e36b-4958-9be5-749df3fbcb66.png
 
 ### 실행 주의사항
 - 실행하려면 본인의 경로로 수정해주세요. package.json

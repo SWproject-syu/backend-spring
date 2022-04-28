@@ -1,6 +1,6 @@
 package com.schoolproj2.schoolproj2.controller;
 
-
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,18 +11,16 @@ import java.util.List;
 @RequestMapping(value = "/api/file")
 public class FileController {
     @CrossOrigin("*")
-    @PostMapping(value = "/upload/profile-img")
-    public @ResponseBody
-    String requestUploadFile(@RequestParam("fileList") List<MultipartFile> fileList) {
-        try {
-            for (MultipartFile multipartFile : fileList) {
-                FileOutputStream writer = new FileOutputStream("./images/" + multipartFile.getOriginalFilename());
-                writer.write(multipartFile.getBytes());
-                writer.close();
-            }
-        } catch (Exception e) {
-            return "upload fail";
-        }
-        return "upload success";
+    @PostMapping(value = "/upload/image", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public Object uploadImage(@RequestParam("fileList") MultipartFile img) {
+        System.out.println(img.getOriginalFilename());
+        return img.getOriginalFilename();
+    }
+
+    @CrossOrigin("*")
+    @PostMapping(value = "/upload/audio", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public Object uploadAudio(@RequestParam("fileList") MultipartFile img) {
+        System.out.println(img.getOriginalFilename());
+        return img.getOriginalFilename();
     }
 }

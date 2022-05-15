@@ -15,18 +15,20 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "volunteer")
-public class Volunteer implements Serializable {
+public class Volunteer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@CreatedDate
 	@Column(name = "createAt", nullable = true, columnDefinition = "datetime(3)")
 	private LocalDateTime createAt;
+
 	@LastModifiedDate
 	@Column(name = "updateAt", nullable = true, columnDefinition = "datetime(3)")
 	private LocalDateTime updateAt;
 	@Column(name = "name", nullable = true)
-	String name = "";
+	private String name = "";
 	@Column(name = "phonenumber", nullable = true)
 	String phonenumber = "";
 	@Column(name = "location", nullable = true)
@@ -40,8 +42,7 @@ public class Volunteer implements Serializable {
 	@Column(name = "dateDesc", nullable = true)
 	String dateDesc = "";
 
-	public Volunteer() {
-	}
+
 
 	public Volunteer(String name, String phonenumber, String location, String date, String startAt,
 			String endAt, String dateDesc) {
@@ -60,14 +61,14 @@ public class Volunteer implements Serializable {
 		return this;
 	}
 
-	public void set(Volunteer a) {
-		this.name = a.name;
-		this.phonenumber = a.phonenumber;
-		this.location = a.location;
-		this.date = a.date;
-		this.startAt = a.startAt;
-		this.endAt = a.endAt;
-		this.dateDesc = a.dateDesc;
+	public void set(Volunteer volunteer) {
+		this.name = volunteer.name;
+		this.phonenumber = volunteer.phonenumber;
+		this.location = volunteer.location;
+		this.date = volunteer.date;
+		this.startAt = volunteer.startAt;
+		this.endAt = volunteer.endAt;
+		this.dateDesc = volunteer.dateDesc;
 	}
 
 	// @Override

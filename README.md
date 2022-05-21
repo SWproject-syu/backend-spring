@@ -8,6 +8,21 @@ java verison: 11
 group id : com.schoolproj2
 의존성 라이브러리: Spring Boot DevTools / Spring Web 기반
 ```
+### AWS 열기
+```
+(우분투일경우 권한 설정)chmod 400 syuproject_key.pem
+
+ssh -i "syuproject_key.pem" ubuntu@ec2-15-165-197-35.ap-northeast-2.compute.amazonaws.com
+```
+### AWS RDS
+```
+DB: syuproject
+End-Point(host): syuproject.c3vckukxi7cg.ap-northeast-2.rds.amazonaws.com
+Port: 3306
+Password: syuproject123$
+DB System: MySQL
+Region: ap-northeast-2c
+```
 
 ### 실행
 - VScode

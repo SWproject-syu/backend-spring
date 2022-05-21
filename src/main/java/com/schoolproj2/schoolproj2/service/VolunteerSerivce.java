@@ -1,21 +1,50 @@
 package com.schoolproj2.schoolproj2.service;
 
-import com.schoolproj2.schoolproj2.entity.VolunteerDto;
+import com.schoolproj2.schoolproj2.entity.Volunteer;
 import com.schoolproj2.schoolproj2.repository.VolunteerRepository;
-import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-@Builder
+@Transactional(readOnly = true)
 public class VolunteerSerivce {
 
-    private VolunteerRepository volunteerRepository;
+    private final VolunteerRepository volunteerRepository;
+    /**회원가입
+    @Transactional (readOnly = false)
+    public Long join(Volunteer volunteer){
+        validateDuplicateVolunteer(volunteer);
+        volunteerRepository.
+                save(volunteer);
+        return volunteer
+    }
+    private void validateDuplicateVolunteer(Volunteer volunteer) {
+        List<Volunteer> findVolunteers =
+                VolunteerRepository.findByName(volunteer.getName());
+        if (!findVolunteers.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
+    }
+    **/
+    //전체 조회
 
+/**
+    public  List<Volunteer> findVolunteers(){
+        return VolunteerRepository.findAll();
+    }
+**/
+
+
+
+
+    /**
     public String signup(VolunteerDto volunteerDto) {
         volunteerRepository.save(volunteerDto.builder()
                 .name(volunteerDto.getName())
@@ -24,5 +53,5 @@ public class VolunteerSerivce {
                 .endAt(volunteerDto.getEndAt())
                 .build());
         return "Success save";
-    }
+    }**/
 }

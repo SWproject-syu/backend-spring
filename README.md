@@ -13,6 +13,9 @@ group id : com.schoolproj2
 (리눅스/맥일경우 권한 설정)chmod 400 syuproject_key.pem
 
 ssh -i "syuproject_key.pem" ubuntu@ec2-15-165-197-35.ap-northeast-2.compute.amazonaws.com
+
+
+mysql -u admin --host syuproject.c3vckukxi7cg.ap-northeast-2.rds.amazonaws.com -P 3306 -p
 ```
 ### AWS RDS
 ```

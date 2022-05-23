@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "volunteer")
+@Getter
 public class Volunteer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,14 +62,7 @@ public class Volunteer {
 		this.updateAt = LocalDateTime.now();
 	}
 
-	public Volunteer toEntity(){
-		return Volunteer.builder()
-				.name(name)
-				.endAt(endAt)
-				.startAt(startAt)
-				.location(location)
-				.build();
-	}
+
 	public Volunteer get() {
 		return this;
 	}

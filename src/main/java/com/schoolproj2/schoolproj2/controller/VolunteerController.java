@@ -18,16 +18,20 @@ public class VolunteerController {
 
 
     //자원봉사자 등록 페이지
-    @GetMapping("/Volunteer/signup")
-    public String signup(VolunteerDto volunteerDto){
-        return "/signup";
-    }
-    @PostMapping("/VolunteerDto")
+
+    @GetMapping("/api")
     private ResponseEntity<String> Volunteer(@RequestBody VolunteerDto volunteerDto){
+
+        volunteerDto.toEntity(volunteerDto);
+
+
+
         log.info("Volunteer.location = {}",volunteerDto.getLocation());
         log.info("Volunteer.startAt = {}",volunteerDto.getStartAt());
         log.info("Volunteer.endAt = {}",volunteerDto.getEndAt());
         log.info("Volunteer.phonenumber= {}",volunteerDto.getPhonenumber());
+
+
         return new ResponseEntity<>("데이터 전송 완료 ", HttpStatus.OK);
     }
 

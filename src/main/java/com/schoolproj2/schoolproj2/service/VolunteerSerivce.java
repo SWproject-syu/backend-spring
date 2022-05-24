@@ -1,6 +1,7 @@
 package com.schoolproj2.schoolproj2.service;
 
 import com.schoolproj2.schoolproj2.entity.Volunteer;
+import com.schoolproj2.schoolproj2.entity.VolunteerDto;
 import com.schoolproj2.schoolproj2.repository.VolunteerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,14 +45,14 @@ public class VolunteerSerivce {
 
 
 
-    /**
-    public String signup(VolunteerDto volunteerDto) {
-        volunteerRepository.save(volunteerDto.builder()
+
+  /** public String signup(VolunteerDto volunteerDto) {
+        volunteerRepository.save(Volunteer.builder()
                 .name(volunteerDto.getName())
                 .phonenumber(volunteerDto.getPhonenumber())
                 .startAt(volunteerDto.getStartAt())
                 .endAt(volunteerDto.getEndAt())
                 .build());
-        return "Success save";
-    }**/
-}
+        return "Success save"; **/
+    }
+

@@ -2,7 +2,6 @@ package com.schoolproj2.schoolproj2.entity;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,5 +17,13 @@ public class VolunteerDto {
     private String name;
     private String phonenumber;
 
+    public Volunteer toEntity(VolunteerDto volunteerDto){
+        return Volunteer.builder()
+                .name(volunteerDto.name)
+                .endAt(endAt)
+                .startAt(startAt)
+                .location(location)
+                .build();
+    }
 }
 

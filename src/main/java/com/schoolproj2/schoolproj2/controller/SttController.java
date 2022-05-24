@@ -63,7 +63,7 @@ public class SttController {
             responseCode = con.getResponseCode();
             InputStream is = con.getInputStream();
             byte[] buffer = new byte[is.available()];
-            int byteRead = is.read(buffer);
+            // int byteRead = is.read(buffer);
             responBody = new String(buffer);
 
             System.out.println("[responseCode] " + responseCode);

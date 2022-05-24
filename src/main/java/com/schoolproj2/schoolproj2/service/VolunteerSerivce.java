@@ -1,14 +1,14 @@
 package com.schoolproj2.schoolproj2.service;
 
-import com.schoolproj2.schoolproj2.entity.Volunteer;
-import com.schoolproj2.schoolproj2.entity.VolunteerDto;
-import com.schoolproj2.schoolproj2.repository.VolunteerRepository;
+// import com.schoolproj2.schoolproj2.entity.Volunteer;
+// import com.schoolproj2.schoolproj2.entity.VolunteerDto;
+// import com.schoolproj2.schoolproj2.repository.VolunteerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+// import java.util.List;
 
 
 @Service
@@ -17,7 +17,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class VolunteerSerivce {
 
-    private final VolunteerRepository volunteerRepository;
+    // private final VolunteerRepository volunteerRepository;
     /**회원가입
     @Transactional (readOnly = false)
     public Long join(Volunteer volunteer){

@@ -20,6 +20,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'net.sf.json-lib:json-lib:2.4:jdk15' //json사용 위해
+	implementation 'net.nurigo:sdk:4.2.3' //SOLAPI 의존성 추가준
 	implementation 'com.google.code.gson:gson:2.8.7' //gson 사용 위해
 	runtimeOnly 'mysql:mysql-connector-java' // MySQL 연결을 위한 Connector
 	implementation 'org.springframework.boot:spring-boot-starter-web'

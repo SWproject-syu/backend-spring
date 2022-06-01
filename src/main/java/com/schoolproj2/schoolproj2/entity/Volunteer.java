@@ -18,7 +18,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
+
 @Table(name = "volunteer")
 
 public class Volunteer {
@@ -27,16 +27,25 @@ public class Volunteer {
 	private Long id;
 
 	@CreatedDate
+	@Column(length = 100, nullable = false)
 	private LocalDateTime createAt;
 
 	@LastModifiedDate
+	@Column(length = 100, nullable = false)
 	private LocalDateTime updateAt;
+	@Column(length = 100, nullable = false)
 	private String name;
-	private	String phonenumber ;
+	@Column(length = 100, nullable = false)
+	private	String phonenumber;
+	@Column(length = 100, nullable = false)
 	private String location;
+	@Column(length = 100, nullable = false)
     private String date;
+	@Column(length = 100, nullable = false)
 	private String startAt;
+	@Column(length = 100, nullable = false)
 	private String endAt;
+	@Column(length = 100, nullable = false)
 	private String dateDesc;
 
 

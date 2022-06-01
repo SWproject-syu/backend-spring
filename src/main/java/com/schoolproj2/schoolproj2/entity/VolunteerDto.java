@@ -16,9 +16,9 @@ public class VolunteerDto {
     private String name;
     private String phonenumber;
 
-    public Volunteer toEntity(VolunteerDto volunteerDto){
+    public Volunteer toEntity(Volunteer volunteer){
         return Volunteer.builder()
-                .name(volunteerDto.name)
+                .name(name)
                 .endAt(endAt)
                 .startAt(startAt)
                 .location(location)

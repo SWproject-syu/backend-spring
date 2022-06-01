@@ -19,25 +19,6 @@ public class VolunteerSerivce {
 
     private final VolunteerRepository volunteerRepository;
 
-    /**
-     * public Long join(Volunteer volunteer){
-     * <p>
-     * Volunteer volunteer1 = new Volunteer();
-     * <p>
-     * volunteer.setLocation(volunteer.getLocation());
-     * volunteer.setPhonenumber(volunteer.getPhonenumber());
-     * volunteer.setName(volunteer.getName());
-     * volunteer.setStartAt(volunteer.getStartAt());
-     * volunteer.setEndAt(volunteer.getEndAt());
-     * <p>
-     * <p>
-     * <p>
-     * volunteerRepository.save(volunteer);
-     * <p>
-     * return volunteer.getId();
-     * }
-     **/
-
     @Transactional
     public void saveVolunteer(Volunteer volunteer){
         volunteerRepository.save(volunteer);
@@ -50,7 +31,7 @@ public class VolunteerSerivce {
         return volunteerRepository.findOne(Id);
     }
 
-
+/**
     public String signup(Volunteer volunteer) {
         volunteerRepository.save(Volunteer.builder()
                 .name(volunteer.getName())
@@ -60,5 +41,5 @@ public class VolunteerSerivce {
                 .build());
         return "Success save";
     }
-
+**/
 }

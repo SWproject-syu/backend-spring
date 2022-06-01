@@ -66,15 +66,15 @@ public class VolunteerController {
 
     //자원봉사자 새로 등록 페이지 연결
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("volunteers/new")
+    @RequestMapping(value = "volunteers/new", method =RequestMethod.GET, produces = "application/json; charset=urf8")
     public String createForm(Model model){
         model.addAttribute("form",new VolunteerForm());
         return "volunteers/newvolunteerForm";
     }
     //자원봉사자 저장
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping("volunteers/new")
-    public String create(VolunteerForm form){
+    @RequestMapping(value = "volunteer/new", method =RequestMethod.POST, produces = "application/json; charset=urf8")
+    public @ResponseBody String create(VolunteerForm form){
         Volunteer volunteer = new Volunteer();
         volunteer.setName(form.getName());
         volunteer.setPhonenumber(form.getPhonenumber());
@@ -92,8 +92,9 @@ public class VolunteerController {
     }
     //자원봉사자 조회
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("volunteers")
-    public String list (Model model){
+    @RequestMapping(value = "volunteers", method =RequestMethod.GET, produces = "application/json; charset=urf8")
+
+    public  @ResponseBody String list (Model model){
         List<Volunteer> volunteers = volunteerSerivce.findVolunteers();
         model.addAttribute("volunteers",volunteers);
         return "volunteers/volunteerList";

@@ -62,13 +62,13 @@ public class VolunteerController {
    **/
 
     //자원봉사자 새로 등록 페이지 연결
-    @GetMapping("/apply/new")
+    @GetMapping("/volunteers/new")
     public String createForm(Model model){
         model.addAttribute("form",new VolunteerForm());
         return "volunteers/newvolunteerForm";
     }
     //자원봉사자 저장
-    @PostMapping("/apply")
+    @PostMapping("/volunteers/new")
     public String create(VolunteerForm form){
         Volunteer volunteer = new Volunteer();
         volunteer.setName(form.getName());
@@ -81,7 +81,7 @@ public class VolunteerController {
 
 
         volunteerSerivce.saveVolunteer(volunteer);
-        
+
         return "redirect:/";
 
     }
@@ -93,6 +93,5 @@ public class VolunteerController {
         return "volunteers/volunteerList";
     }
 
-///생성완료 이제 DB저장은 VolunteerService
-
+    
 }

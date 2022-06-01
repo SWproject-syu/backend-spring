@@ -46,6 +46,9 @@ public class VolunteerSerivce {
     public List<Volunteer> findVolunteers(){
         return volunteerRepository.findAll();
     }
+    public Volunteer findOne(Long Id){
+        return volunteerRepository.findOne(Id);
+    }
 
 
     public String signup(Volunteer volunteer) {

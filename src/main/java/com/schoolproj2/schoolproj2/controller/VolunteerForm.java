@@ -1,14 +1,18 @@
 package com.schoolproj2.schoolproj2.controller;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class VolunteerForm {
     private String Name;
     private Long id;

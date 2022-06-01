@@ -13,12 +13,14 @@ import javax.persistence.Table;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-@Entity
+@NoArgsConstructor
+
 @Data
 @Table(name = "volunteer")
-@Getter
+
 public class Volunteer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,17 +70,5 @@ public class Volunteer {
 		this.dateDesc = volunteer.dateDesc;
 	}
 **/
-	// @Override
-	// public String toString() {
-	// StringBuilder builder = new StringBuilder("{");
-	// builder.append("\"coffee\":\"");
-	// builder.append(this.coffee);
-	// builder.append("\"type\":\"");
-	// builder.append(this.type);
-	// builder.append("\",\"price\":");
-	// builder.append(this.price);
-	// builder.append("}");
-	// return builder.toString();
-	// }
 
 }

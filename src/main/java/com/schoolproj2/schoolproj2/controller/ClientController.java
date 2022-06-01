@@ -36,7 +36,6 @@ public class ClientController {
 		Optional<Client> client = clientRepository.findById(id);
 		return client.get();
 	}
-
 	@PostMapping(value = "/client", produces = "application/json; charset=utf-8")
 	public String setMenu(@RequestBody Map<String, String> body) throws ParseException {
 		Client client = new Client(body.get("name"), body.get("phonenumber"), body.get("require_at"));

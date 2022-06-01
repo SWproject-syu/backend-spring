@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,63 +17,59 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
+
 public class SttController {
     static public void main ( String[] args ) {
-        String openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/Recognition";
-        String accessKey = "078f92d9-3855-4bfc-8485-73098d304b52";    // 발급받은 API Key + 추가해야함
-        String languageCode = "korean";     // 언어 코드
-        String audioFilePath = "/upload/audio";  // 녹음된 음성 파일 경로 추가
-        String audioContents = null;
-
-        Gson gson = new Gson();
-
-        Map<String, Object> request = new HashMap<>();
-        Map<String, String> argument = new HashMap<>();
+        String clientId = "bykkpv8pqh";             // Application Client ID";
+        String clientSecret = "c2rYu6lkCKqrOJQyNHN9hkhQEorVMtBuQ4xwfKwW";     // Application Client Secret";
 
         try {
-            Path path = Paths.get(audioFilePath);
-            byte[] audioBytes = Files.readAllBytes(path);
-            audioContents = Base64.getEncoder().encodeToString(audioBytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            String imgFile = "./voice";
+            File voiceFile = new File(imgFile);
 
-        argument.put("language_code", languageCode);
-        argument.put("audio", audioContents);
+            String language = "Kor";        // 언어 코드 ( Kor, Jpn, Eng, Chn )
+            String apiURL = "https://naveropenapi.apigw-pub.fin-ntruss.com/recog/v1/stt?lang=" + language;
+            URL url = new URL(apiURL);
 
-        request.put("access_key", accessKey);
-        request.put("argument", argument);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setUseCaches(false);
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestProperty("Content-Type", "application/octet-stream");
+            conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+            conn.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
 
-        URL url;
-        Integer responseCode = null;
-        String responBody = null;
-        try {
-            url = new URL(openApiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("POST");
-            con.setDoOutput(true);
+            OutputStream outputStream = conn.getOutputStream();
+            FileInputStream inputStream = new FileInputStream(voiceFile);
+            byte[] buffer = new byte[4096];
+            int bytesRead = -1;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+            outputStream.flush();
+            inputStream.close();
+            BufferedReader br = null;
+            int responseCode = conn.getResponseCode();
+            if (responseCode == 200) { // 정상 호출
+                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            } else {  // 오류 발생
+                System.out.println("error!!!!!!! responseCode= " + responseCode);
+                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            }
+            String inputLine;
 
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.write(gson.toJson(request).getBytes("UTF-8"));
-            wr.flush();
-            wr.close();
-
-            responseCode = con.getResponseCode();
-            InputStream is = con.getInputStream();
-            byte[] buffer = new byte[is.available()];
-            int byteRead = is.read(buffer);
-            responBody = new String(buffer);
-
-            System.out.println("[responseCode] " + responseCode);
-            System.out.println("[responBody]");
-            System.out.println(responBody);
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (br != null) {
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                br.close();
+                System.out.println(response.toString());
+            } else {
+                System.out.println("error !!!");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
-
 }
-

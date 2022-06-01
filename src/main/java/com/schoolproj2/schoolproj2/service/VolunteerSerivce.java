@@ -18,41 +18,44 @@ import java.util.List;
 public class VolunteerSerivce {
 
     private final VolunteerRepository volunteerRepository;
-    /**회원가입
-    @Transactional (readOnly = false)
-    public Long join(Volunteer volunteer){
-        validateDuplicateVolunteer(volunteer);
-        volunteerRepository.
-                save(volunteer);
-        return volunteer
+
+    /**
+     * public Long join(Volunteer volunteer){
+     * <p>
+     * Volunteer volunteer1 = new Volunteer();
+     * <p>
+     * volunteer.setLocation(volunteer.getLocation());
+     * volunteer.setPhonenumber(volunteer.getPhonenumber());
+     * volunteer.setName(volunteer.getName());
+     * volunteer.setStartAt(volunteer.getStartAt());
+     * volunteer.setEndAt(volunteer.getEndAt());
+     * <p>
+     * <p>
+     * <p>
+     * volunteerRepository.save(volunteer);
+     * <p>
+     * return volunteer.getId();
+     * }
+     **/
+
+    @Transactional
+    public void saveVolunteer(Volunteer volunteer){
+        volunteerRepository.save(volunteer);
     }
-    private void validateDuplicateVolunteer(Volunteer volunteer) {
-        List<Volunteer> findVolunteers =
-                VolunteerRepository.findByName(volunteer.getName());
-        if (!findVolunteers.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }
+
+    public List<Volunteer> findVolunteers(){
+        return volunteerRepository.findAll();
     }
-    **/
-    //전체 조회
-
-/**
-    public  List<Volunteer> findVolunteers(){
-        return VolunteerRepository.findAll();
-    }
-**/
 
 
-
-
-
-  /** public String signup(VolunteerDto volunteerDto) {
+    public String signup(Volunteer volunteer) {
         volunteerRepository.save(Volunteer.builder()
-                .name(volunteerDto.getName())
-                .phonenumber(volunteerDto.getPhonenumber())
-                .startAt(volunteerDto.getStartAt())
-                .endAt(volunteerDto.getEndAt())
+                .name(volunteer.getName())
+                .phonenumber(volunteer.getPhonenumber())
+                .startAt(volunteer.getStartAt())
+                .endAt(volunteer.getEndAt())
                 .build());
-        return "Success save"; **/
+        return "Success save";
     }
 
+}

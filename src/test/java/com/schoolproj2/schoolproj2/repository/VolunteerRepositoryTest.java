@@ -9,7 +9,6 @@ import org.springframework.test.annotation.Rollback;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @SpringBootTest
 class VolunteerRepositoryTest {
 

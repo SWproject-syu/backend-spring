@@ -1,6 +1,6 @@
 package com.schoolproj2.schoolproj2.entity;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;

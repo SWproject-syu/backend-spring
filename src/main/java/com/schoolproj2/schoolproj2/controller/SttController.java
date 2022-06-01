@@ -38,7 +38,6 @@ public class SttController {
             conn.setRequestProperty("Content-Type", "application/octet-stream");
             conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
             conn.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
-
             OutputStream outputStream = conn.getOutputStream();
             FileInputStream inputStream = new FileInputStream(voiceFile);
             byte[] buffer = new byte[4096];

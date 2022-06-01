@@ -40,8 +40,8 @@ public List<Volunteer> findAll(){
 }
 
 
+    List<Volunteer> findAll();
 
-
-
-
+    @Query("select v from Volunteer v where v.name = :name")
+    Volunteer findByName(@Param("name") String name);
 }

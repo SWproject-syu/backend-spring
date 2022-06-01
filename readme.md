@@ -50,11 +50,18 @@ Region: ap-northeast-2c
 
 ```
 git clone "git주소" && cd 프로젝트  && npm run install && npm run build
+
+gradlew build하면 jar파일 build/libs/안에 생기구
+java -jar 파일이름.jar 이거하면 jar 실행
+java -jar build/libs/schoolproj2-0.0.1-SNAPSHOT.jar
 ```
 후 src/main/java/com/schoolproj2/schoolproj2/Schoolproj2Application.java 마우스 우클릭 -> Run Java
-- 실행 접근 경로는 [8080포트](http://localhost:8080/)입니다.
+- 실행 접근 경로는 [8081포트](http://localhost:8081/)입니다.
 
+src/resources/application.properties
+server.port = 8081
 
+*Vue가 8080
 
 
 

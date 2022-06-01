@@ -7,7 +7,7 @@ import com.schoolproj2.schoolproj2.service.VolunteerSerivce;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -30,7 +30,6 @@ public class VolunteerController {
     private ResponseEntity<String> Volunteer(@RequestBody VolunteerDto volunteerDto){
 
         volunteerDto.toEntity(volunteerDto);
-
         log.info("Volunteer.name = {}",volunteerDto.getName());
         log.info("Volunteer.location = {}",volunteerDto.getLocation());
         log.info("Volunteer.startAt = {}",volunteerDto.getStartAt());

@@ -19,7 +19,7 @@ public class ApiController {
     @GetMapping("/search")
     public String callApi() throws IOException {
         StringBuilder result = new StringBuilder();
-        StringBuffer reult = new StringBuffer();
+        // StringBuffer reult = new StringBuffer();
         String urlStr = "http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json?auth=e9bbf74e2601259689d7ffe71a8a9707&topFinGrpNo=020000&pageNo=1";
 
         URL url = new URL(urlStr);

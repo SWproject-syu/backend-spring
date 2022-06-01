@@ -84,7 +84,7 @@ public class VolunteerController {
 
         volunteerSerivce.saveVolunteer(volunteer);
 
-        return "redirect:/";
+        return "true";
 
     }
     //자원봉사자 조회

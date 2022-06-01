@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,7 @@ import java.util.List;
 @Controller
 
 @AllArgsConstructor
+@Slf4j
 public class VolunteerController {
 
 
@@ -25,7 +28,7 @@ public class VolunteerController {
 /**
     //자원봉사자 등록 페이지
     @CrossOrigin(origins = "*")
-    @PostMapping("/apply")
+    @GetMapping("/apply")
 
     private ResponseEntity<String> Volunteer(@RequestBody VolunteerDto volunteerDto){
 
@@ -41,7 +44,7 @@ public class VolunteerController {
         return new ResponseEntity<>("데이터 전송 완료 ", HttpStatus.OK);
     }
 
-    **/
+**/
     //조회 매핑
     /**@GetMapping("/list")
     public String list(VolunteerDto volunteerDto){
@@ -63,14 +66,14 @@ public class VolunteerController {
 
     //자원봉사자 새로 등록 페이지 연결
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/volunteers/new")
+    @GetMapping("volunteers/new")
     public String createForm(Model model){
         model.addAttribute("form",new VolunteerForm());
         return "volunteers/newvolunteerForm";
     }
     //자원봉사자 저장
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping("/volunteers/new")
+    @PostMapping("volunteers/new")
     public String create(VolunteerForm form){
         Volunteer volunteer = new Volunteer();
         volunteer.setName(form.getName());
@@ -84,12 +87,12 @@ public class VolunteerController {
 
         volunteerSerivce.saveVolunteer(volunteer);
 
-        return "true";
+        return "home";
 
     }
     //자원봉사자 조회
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/volunteers")
+    @GetMapping("volunteers")
     public String list (Model model){
         List<Volunteer> volunteers = volunteerSerivce.findVolunteers();
         model.addAttribute("volunteers",volunteers);

@@ -62,12 +62,14 @@ public class VolunteerController {
    **/
 
     //자원봉사자 새로 등록 페이지 연결
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/volunteers/new")
     public String createForm(Model model){
         model.addAttribute("form",new VolunteerForm());
         return "volunteers/newvolunteerForm";
     }
     //자원봉사자 저장
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/volunteers/new")
     public String create(VolunteerForm form){
         Volunteer volunteer = new Volunteer();
@@ -86,6 +88,7 @@ public class VolunteerController {
 
     }
     //자원봉사자 조회
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/volunteers")
     public String list (Model model){
         List<Volunteer> volunteers = volunteerSerivce.findVolunteers();
@@ -93,5 +96,5 @@ public class VolunteerController {
         return "volunteers/volunteerList";
     }
 
-    
+
 }

@@ -17,7 +17,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Entity
 @Data
 @Table(name = "volunteer")
 

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequiredArgsConstructor
 public class MemberApiController {
@@ -24,7 +24,6 @@ public class MemberApiController {
     private final MemberService memberService;
     //회원 조회 api (json)
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/api/members")
     public List<Member> member(){
     return memberService.findMembers();

@@ -24,6 +24,7 @@ public class MemberApiController {
     //회원 조회 api (json)
 
     @GetMapping("/api/members")
+    @CrossOrigin(origins = "*")
     public List<Member> member(){
     return memberService.findMembers();
 
@@ -50,6 +51,7 @@ public class MemberApiController {
     //회원 등록  api (json)
 
     @PostMapping("/api/members")
+    @CrossOrigin(origins = "*")
     public CreateMemberResponse saveMember(@RequestBody @Valid CreateMemberRequest request){
         Member member = new Member();
         member.setName(request.getName());
@@ -64,7 +66,9 @@ public class MemberApiController {
     }
     //회원수정 api(json)
 
+    
     @PutMapping("/api/members/{id}")
+    @CrossOrigin(origins = "*")
     public UpdateMemberResponse updateMember(@PathVariable("id") Long id, @RequestBody @Valid UpdateMemberRequest request){
 
         memberService.update(id,request.getName());

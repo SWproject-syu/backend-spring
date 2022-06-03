@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 public class MemberApiController {
@@ -24,7 +24,6 @@ public class MemberApiController {
     private final MemberService memberService;
     //회원 조회 api (json)
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/api/members")
     public List<Member> member(){
     return memberService.findMembers();
@@ -51,7 +50,7 @@ public class MemberApiController {
 
     //회원 등록  api (json)
 
-    @CrossOrigin(origins = "*")
+
     @PostMapping("/api/members")
     public CreateMemberResponse saveMember(@RequestBody @Valid CreateMemberRequest request){
         Member member = new Member();
@@ -67,7 +66,7 @@ public class MemberApiController {
     }
     //회원수정 api(json)
 
-    @CrossOrigin(origins = "*")
+
     @PutMapping("/api/members/{id}")
     public UpdateMemberResponse updateMember(@PathVariable("id") Long id, @RequestBody @Valid UpdateMemberRequest request){
 
